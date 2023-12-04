@@ -45,6 +45,20 @@ app.MapGet("/api/values", async (AppDbContext dbContext) =>
     return Results.Ok(values);
 });
 
+app.MapGet("/api/add", async (AppDbContext dbContext) =>
+{
+    {
+        var entity = new YourEntity
+        {
+            Name = "NewEntity"
+        };
+
+        dbContext.YourEntities.Add(entity);
+        dbContext.SaveChanges();
+    }
+    return Results.Ok();
+});
+
 
 app.Run();
 
